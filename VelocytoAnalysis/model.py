@@ -13,7 +13,7 @@ def build_model(counts, velocity, genes=None, tfs=None, method='rf', n_estimator
     if tfs is None:
         tfs = genes
     x, x_val, y, y_val = train_test_split(counts[:, tfs], velocity[:, genes], 
-                                          train_size=train_size, random_state=42)
+                                          test_size=1-train_size, random_state=42)
     
     # Build model
     if method == 'lasso':
@@ -26,5 +26,5 @@ def build_model(counts, velocity, genes=None, tfs=None, method='rf', n_estimator
     train_score = model.score(x, y)
     test_score = model.score(x_val, y_val)
     
-    print('Fitted model | Training score: %.4f; Test score: %.4f' % (train_score, test_score))
+    print('Fitted model | Training R-Square: %.4f; Test R-Square: %.4f' % (train_score, test_score))
     return model

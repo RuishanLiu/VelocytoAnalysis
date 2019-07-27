@@ -3,6 +3,15 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from .mst import *
 
+def compute_lineage_coorectness(edges_mst, edges):
+    def extract_edge(edges):
+        return set([(edges[i, 0], edges[i, 1]) for i in range(edges.shape[0])])
+    edges = extract_edge(edges)
+    edges_mst = extract_edge(edges_mst)
+    edges_intersect = edges.intersection(edges_mst)
+    correctness = 2 * float(len(edges_intersect)) / (len(edges)+len(edges_mst))
+    return correctness
+
 def get_lineage(path, counts, milestones, genes=None, root=None, classifier='rf', n_estimators=50, n_neighbors=3):
     '''
     clssifier: 'rf'(random forest) / 'knn' (k-nearest-neighbors)
@@ -24,12 +33,12 @@ def get_lineage(path, counts, milestones, genes=None, root=None, classifier='rf'
         trajectory = path_check.transpose(1, 0, 2)
         prob = classifier_milestone.predict_proba(trajectory.reshape(-1, trajectory.shape[2]))
         prob = prob.reshape(trajectory.shape[0], trajectory.shape[1], len(milestones_set)) 
-    prob_mean = np.mean(prob, axis=0)
-    for i_to, m_to in enumerate(milestones_set):
-        if m == m_to:
-            continue
-        weight = 1 - np.mean(prob_mean[:, i_to])
-        arcs.append(Arc(m_to, weight, m))
+        prob_mean = np.mean(prob, axis=0)
+        for i_to, m_to in enumerate(milestones_set):
+            if m == m_to:
+                continue
+            weight = 1 - np.mean(prob_mean[:, i_to])
+            arcs.append(Arc(m_to, weight, m))
         
     # Find root
     if root is None:

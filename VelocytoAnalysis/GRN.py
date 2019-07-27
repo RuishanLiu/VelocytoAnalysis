@@ -2,10 +2,25 @@
 
 from sklearn.tree.tree import BaseDecisionTree
 from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor
+from sklearn.metrics import roc_auc_score
 from numpy import *
 import time
 from operator import itemgetter
 from multiprocessing import Pool
+
+def compute_GRN_auroc(VIM, grn_true):
+    import numpy as np
+    def get_edges(link):
+        return [vi[0] for vi in link]
+    def get_scores(link):
+        return [vi[1] for vi in link]
+    link = get_link_list(VIM)
+    edges = get_edges(link)
+    scores = get_scores(link)
+    edges_true = [tuple(edge) for edge in grn_true]
+    label = np.array([(edge in edges_true) for edge in edges], dtype=np.int)
+    auroc = roc_auc_score(label, scores)
+    return auroc
 
 def get_GRN(counts, velocity=None):
     if velocity is None:
@@ -263,7 +278,7 @@ def GENIE3(expr_data,output_data=None,gene_names=None,regulators='all',tree_meth
     print('Tree method: ' + str(tree_method))
     print('K: ' + str(K))
     print('Number of trees: ' + str(ntrees))
-    print('\n')
+    # print('\n')
         
     
     # Get the indices of the candidate regulators
@@ -277,7 +292,7 @@ def GENIE3(expr_data,output_data=None,gene_names=None,regulators='all',tree_meth
     VIM = zeros((ngenes,ngenes))
     
     if nthreads > 1:
-        print('running jobs on %d threads' % nthreads)
+        # print('running jobs on %d threads' % nthreads)
 
         input_data = list()
         for i in range(ngenes):
@@ -290,9 +305,9 @@ def GENIE3(expr_data,output_data=None,gene_names=None,regulators='all',tree_meth
             VIM[i,:] = vi
 
     else:
-        print('running single threaded jobs')
+        # print('running single threaded jobs')
         for i in range(ngenes):
-            print('Gene %d/%d...' % (i+1,ngenes))
+            # print('Gene %d/%d...' % (i+1,ngenes))
             
             vi = GENIE3_single(expr_data,i,input_idx,tree_method,K,ntrees,output_data=output_data)
             VIM[i,:] = vi
@@ -301,7 +316,7 @@ def GENIE3(expr_data,output_data=None,gene_names=None,regulators='all',tree_meth
     VIM = transpose(VIM)
  
     time_end = time.time()
-    print("Elapsed time: %.2f seconds" % (time_end - time_start))
+    print("Elapsed time: %.2f seconds\n" % (time_end - time_start))
 
     return VIM
     
