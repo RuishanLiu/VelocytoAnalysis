@@ -34,7 +34,7 @@ Given the static gene expression :code:`counts` and RNA velocity :code:`velocity
     grn_scores = rna_ode.compute_grn_scores()
 
 
-**Evaluation**: If true lineages :code:`lineages_true` or GRN :code:`lineages_true` is known, we provide metric functions to evaluate the results of RNA_ODE
+**Evaluation**: If true lineages :code:`lineages_true` or true GRN :code:`grn_true` is known, we provide metric functions to evaluate the results of RNA_ODE
 
 .. code-block:: python
 
@@ -42,11 +42,11 @@ Given the static gene expression :code:`counts` and RNA velocity :code:`velocity
     correctness = rna_ode.evaluate_lineage_correctness(lineages_true, lineages)
     
     # AUROC of GRN
-    auroc = rna_ode.evaluate_grn_auroc(grn_true, grn_scores_genie3)
+    auroc = rna_ode.evaluate_grn_auroc(grn_true, grn_scores)
 
 Optional Parameters
 -------------------------------
-**Model**: To build the model with function :code:`build_model`, people can choose from three different model types (parameter :code:`model_name`): linear regression :code:`\'linear\'`, lasso regression :code:`\'lasso\'` and random forest regression :code:`\'rf\'`. Other parameters of the model can be set as shown here:
+**Model**: To build the model with function :code:`build_model`, people can choose from three different model types (parameter :code:`model_name`): linear regression :code:`'linear'`, lasso regression :code:`'lasso'` and random forest regression :code:`'rf'`. Other parameters of the model can be set as shown here:
 
 .. code-block:: python
 
