@@ -17,7 +17,7 @@ Given the static gene expression :code:`counts` and RNA velocity :code:`velocity
 
 .. code-block:: python
 
-	from contrastive import CPCA
+	from VelocytoAnalysis import RNA_ODE
 
 	rna_ode = RNA_ODE(counts, velocity, celltype)
     
@@ -50,7 +50,7 @@ Optional Parameters
 
 .. code-block:: python
 
-	from contrastive import CPCA
+	from VelocytoAnalysis import RNA_ODE
 
 	rna_ode = RNA_ODE(counts, velocity, celltype)
     
