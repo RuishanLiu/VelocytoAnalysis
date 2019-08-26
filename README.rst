@@ -9,7 +9,7 @@ Import
 
 .. code-block:: python
 
-	from VelocytoAnalysis import RNA_ODE
+    from VelocytoAnalysis import RNA_ODE
 
 Basic Usage
 -------------------------------
@@ -17,9 +17,9 @@ Given the static gene expression :code:`counts` and RNA velocity :code:`velocity
 
 .. code-block:: python
 
-	from VelocytoAnalysis import RNA_ODE
+    from VelocytoAnalysis import RNA_ODE
 
-	rna_ode = RNA_ODE(counts, velocity, celltype)
+    rna_ode = RNA_ODE(counts, velocity, celltype)
     
     # Fit model
     model = rna_ode.build_model()
@@ -38,7 +38,7 @@ Given the static gene expression :code:`counts` and RNA velocity :code:`velocity
 
 .. code-block:: python
 
-	# Correctness of lineage
+    # Correctness of lineage
     correctness = rna_ode.evaluate_lineage_correctness(lineages_true, lineages)
     
     # AUROC of GRN
@@ -50,9 +50,9 @@ Optional Parameters
 
 .. code-block:: python
 
-	from VelocytoAnalysis import RNA_ODE
+    from VelocytoAnalysis import RNA_ODE
 
-	rna_ode = RNA_ODE(counts, velocity, celltype)
+    rna_ode = RNA_ODE(counts, velocity, celltype)
     
     # Linear Regression
     model = rna_ode.build_model(model_name='linear')
