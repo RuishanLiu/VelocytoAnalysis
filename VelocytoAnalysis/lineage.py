@@ -3,7 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from .mst import *
 
-def compute_lineage_coorectness(edges_mst, edges):
+def COMPUTE_LINEAGE_CORRECTNESS(edges_mst, edges):
     def extract_edge(edges):
         return set([(edges[i, 0], edges[i, 1]) for i in range(edges.shape[0])])
     edges = extract_edge(edges)
@@ -12,7 +12,7 @@ def compute_lineage_coorectness(edges_mst, edges):
     correctness = 2 * float(len(edges_intersect)) / (len(edges)+len(edges_mst))
     return correctness
 
-def get_lineage(path, counts, milestones, genes=None, root=None, classifier='rf', n_estimators=50, n_neighbors=3):
+def GET_LINEAGE(path, counts, milestones, genes=None, root=None, classifier='rf', n_estimators=50, n_neighbors=3):
     '''
     clssifier: 'rf'(random forest) / 'knn' (k-nearest-neighbors)
     '''

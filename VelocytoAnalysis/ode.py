@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import linear_model
 from sklearn.ensemble import RandomForestRegressor
 
-def ode_simulation(counts, model, genes=None, tfs=None, dt=0.02, n=100, m=1, noise=None):
+def ODE_SIMULATION(counts, model, genes=None, tfs=None, dt=0.02, n=100, m=1, noise=None):
     '''Run ODE Simulation'''
     if genes is None:
         genes = np.array([True] * counts.shape[1])

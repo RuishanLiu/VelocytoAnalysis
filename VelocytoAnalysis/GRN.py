@@ -8,7 +8,7 @@ import time
 from operator import itemgetter
 from multiprocessing import Pool
 
-def compute_GRN_auroc(VIM, grn_true):
+def COMPUTE_GRN_AUROC(VIM, grn_true):
     import numpy as np
     def get_edges(link):
         return [vi[0] for vi in link]
@@ -22,7 +22,7 @@ def compute_GRN_auroc(VIM, grn_true):
     auroc = roc_auc_score(label, scores)
     return auroc
 
-def get_GRN(counts, velocity=None):
+def GET_GRN(counts, velocity=None):
     if velocity is None:
         VIM = GENIE3(counts, output_data=velocity)
     else:

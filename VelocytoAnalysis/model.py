@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import linear_model
 from sklearn.ensemble import RandomForestRegressor
 
-def build_model(counts, velocity, genes=None, tfs=None, method='rf', n_estimators=10, max_depth=10, lasso_alpha=1, train_size=0.7):
+def BUILD_MODEL(counts, velocity, genes=None, tfs=None, method='rf', n_estimators=10, max_depth=10, lasso_alpha=1, train_size=0.7):
     '''
     v = f(x, a). return fitted function f
     method: 'rf'(random forest) / 'lasso' / 'linear'.
