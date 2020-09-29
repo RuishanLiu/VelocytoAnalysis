@@ -1,4 +1,10 @@
-'''Modified from https://github.com/athityakumar/mst'''
+""" Adapted from:
+Title: mst
+Author: Athitya Kumar
+Date: 2016
+Availability: https://github.com/athityakumar/mst.git
+"""
+
 import numpy as np
 from collections import defaultdict, namedtuple
 

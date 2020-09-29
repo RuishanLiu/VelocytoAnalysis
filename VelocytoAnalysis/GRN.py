@@ -1,4 +1,9 @@
-'''Modified from https://github.com/vahuynh/GENIE3/tree/master/GENIE3_python'''
+""" Adapted from:
+Title: GENIE3
+Author: Vân Anh Huynh-Thu
+Date: 2018
+Availability: https://github.com/vahuynh/GENIE3.git
+"""
 
 from sklearn.tree.tree import BaseDecisionTree
 from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor

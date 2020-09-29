@@ -6,18 +6,14 @@ except ImportError:
 setup(
     name = 'VelocytoAnalysis',
     version = '1.1.0',
+    packages=['VelocytoAnalysis'],
+    license='MIT',
     description = 'Python library for using RNA velocity in single-cell analysis',
+    url = 'https://github.com/RuishanLiu/VelocytoAnalysis',
     author = 'Ruishan Liu',
     author_email = 'ruishan@stanford.edu',
-    url = 'https://github.com/RuishanLiu/VelocytoAnalysis',
-    # download_url = '',
-    packages=['VelocytoAnalysis'],
-    keywords = ['RNA Velocity', ''],
     install_requires=[
         'numpy',
-        'sklearn',
-        'time',
-        'operator',
-        'multiprocessing',
+        'sklearn'
     ],
 )
