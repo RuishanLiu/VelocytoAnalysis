@@ -6,7 +6,7 @@ This repository contains examples to use the library. See the python notebooks i
 
 Installation
 --------------------
-Option 3: Install through PyPI.
+Option 1: Install through PyPI.
 
 .. code-block:: shell
 
