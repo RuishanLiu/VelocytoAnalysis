@@ -6,24 +6,24 @@ This repository contains examples to use the library. See the python notebooks i
 
 Installation
 --------------------
-Option 1: Download repository and install manually.
+Option 3: Install through PyPI.
 
 .. code-block:: shell
 
-    git clone https://github.com/RuishanLiu/VelocytoAnalysis.git
-    python setup.py install --user
+    pip install VelocytoAnalysis  
     
-Option 2: Install through github.
+Option 2: Install through Github.
 
 .. code-block:: shell
 
     sudo pip install git+git://github.com/RuishanLiu/VelocytoAnalysis.git#egg=VelocytoAnalysis
-    
-Option 3: INstall through PyPI.
+        
+Option 3: Download repository and then install manually.
 
 .. code-block:: shell
 
-    pip install VelocytoAnalysis   
+    cd VelocytoAnalysis/
+    python setup.py install --user
 
 Import
 --------------------
